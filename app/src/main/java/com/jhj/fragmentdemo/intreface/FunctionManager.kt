@@ -4,8 +4,8 @@ object FunctionManager {
 
 
     private val mFunctionNoParamNoResult: HashMap<String, FunctionNoParamNoResult> = hashMapOf()
-    private val mFunctionNoParamWithResult: HashMap<String, FunctionNoParamWithResult<*>> = hashMapOf()
-    private val mFunctionWithParamNoResult: HashMap<String, FunctionWithParamNoResult<*>> = hashMapOf()
+    private val mFunctionNoParamWithResult: HashMap<String, FunctionNoParamWithResult> = hashMapOf()
+    private val mFunctionWithParamNoResult: HashMap<String, FunctionWithParamNoResult> = hashMapOf()
 
 
     fun addFunction(function: FunctionNoParamNoResult): FunctionManager {
@@ -13,12 +13,12 @@ object FunctionManager {
         return this;
     }
 
-    fun <Result> addFunction(function: FunctionNoParamWithResult<Result>): FunctionManager {
+    fun addFunction(function: FunctionNoParamWithResult): FunctionManager {
         mFunctionNoParamWithResult.put(function.mFunctionName, function)
         return this;
     }
 
-    fun <PARAM> addFunction(function: FunctionWithParamNoResult<PARAM>): FunctionManager {
+    fun addFunction(function: FunctionWithParamNoResult): FunctionManager {
         mFunctionWithParamNoResult.put(function.mFunctionName, function)
         return this
     }
@@ -39,7 +39,7 @@ object FunctionManager {
                 if (clazz != null) {
                     return clazz.cast(function.function())
                 } else {
-                    return function.function() as RESULT?
+                    return function.function()
                 }
             } else {
                 throw Exception()
