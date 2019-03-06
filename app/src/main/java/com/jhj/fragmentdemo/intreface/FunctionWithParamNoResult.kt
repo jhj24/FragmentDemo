@@ -1,7 +1,7 @@
 package com.jhj.fragmentdemo.intreface
 
-abstract class FunctionWithParamNoResult(functionName: String) : Function(functionName) {
+abstract class FunctionWithParamNoResult<PARAM>(functionName: String) : Function(functionName) {
 
-    abstract fun<PARAM> function(param: PARAM)
+    abstract fun function(param: PARAM)
 
 }

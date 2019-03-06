@@ -1,12 +1,15 @@
-package com.jhj.fragmentdemo
+package com.jhj.fragmentdemo.fragment
 
 import android.os.Bundle
-import android.util.Log
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jhj.fragmentdemo.R
+import com.jhj.fragmentdemo.intreface.FunctionManager
+import kotlinx.android.synthetic.main.fragment_one.*
 
-class FragmentTwo : BaseFragment() {
+class FragmentThree : Fragment() {
 
     companion object {
         val INTERFACE = this::class.java.name
@@ -16,10 +19,11 @@ class FragmentTwo : BaseFragment() {
         return inflater.inflate(R.layout.fragment_one, container, false)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val a = functionManager?.invokeFunction(INTERFACE, String::class.java)
-        Log.w("xxx", a)
-
+        button.setOnClickListener {
+            FunctionManager.invokeFunction(INTERFACE,"111")
+        }
     }
 }

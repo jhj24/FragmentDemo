@@ -1,12 +1,11 @@
-package com.jhj.fragmentdemo
+package com.jhj.fragmentdemo.fragment
 
 import android.content.Context
 import android.support.v4.app.Fragment
-import com.jhj.fragmentdemo.intreface.FunctionManager
+import com.jhj.fragmentdemo.MainActivity
 
 open class BaseFragment : Fragment() {
 
-    var functionManager: FunctionManager? = null
 
 
     private var mBaseActivity: MainActivity? = null
