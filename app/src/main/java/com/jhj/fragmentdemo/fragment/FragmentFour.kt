@@ -23,6 +23,7 @@ open class FragmentFour : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        button.text = "Fragment与Activity之间通信\n有参有返回值接口回调"
         button.setOnClickListener {
             val a = FunctionManager.invokeFunction(INTERFACE, "222", String::class.java)
             Log.w("xxx", a)

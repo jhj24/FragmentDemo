@@ -5,12 +5,24 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
+import android.view.LayoutInflater
 import android.widget.Toast
 import com.jhj.fragmentdemo.fragment.*
 import com.jhj.fragmentdemo.intreface.*
+import com.jhj.navigation.GradientPageChangeListener
+import com.jhj.navigation.NavigationBarItem
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val navigationBarItemList = arrayListOf<NavigationBarItem>()
+
+    private val bottomBarList = listOf(
+        "one",
+        "two",
+        "three",
+        "four"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +37,26 @@ class MainActivity : AppCompatActivity() {
         )
         viewPager.adapter = MyAdapter(supportFragmentManager, list)
 
+        list.forEachIndexed { index, fragment ->
+            val view = LayoutInflater.from(this).inflate(R.layout.layout_bottom_navigation, layout_navigation, false)
+            val navigationBarItem = NavigationBarItem(
+                textViewDefault = view.findViewById(R.id.itemTitleDefault),
+                textViewSelected = view.findViewById(R.id.itemTitleSelected)
+            )
+
+            view.setOnClickListener {
+                viewPager.setCurrentItem(index, false)
+            }
+            layout_navigation.addView(view)
+
+            navigationBarItem.textViewDefault?.text = bottomBarList[index]
+            navigationBarItem.textViewSelected?.text = bottomBarList[index]
+            //navigationBarItem.imageViewDefault?.setImageResource(bottomBarList[index].second)
+            navigationBarItemList.add(navigationBarItem)
+        }
+        val listener = GradientPageChangeListener(viewPager, list, navigationBarItemList)
+        listener.setGradientResultColor(R.color.colorAccent)
+        viewPager.addOnPageChangeListener(listener)
 
     }
 

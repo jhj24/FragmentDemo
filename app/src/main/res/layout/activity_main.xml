@@ -16,4 +16,11 @@
 
     </android.support.v4.view.ViewPager>
 
+    <LinearLayout
+            android:background="#f1f1f1"
+            android:id="@+id/layout_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"/>
+
 </LinearLayout>

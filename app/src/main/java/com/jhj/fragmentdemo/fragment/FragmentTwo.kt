@@ -21,6 +21,7 @@ class FragmentTwo : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        button.text = "Fragment与Activity之间通信\n无参有返回值接口回调"
         button.setOnClickListener {
             val a = FunctionManager.invokeFunction(INTERFACE, String::class.java)
             Log.w("xxx", a)

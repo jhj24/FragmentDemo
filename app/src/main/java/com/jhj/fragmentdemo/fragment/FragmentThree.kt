@@ -22,6 +22,7 @@ class FragmentThree : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        button.text = "Fragment与Activity之间通信\n有参无返回值接口回调"
         button.setOnClickListener {
             FunctionManager.invokeFunction(INTERFACE,"111")
         }
